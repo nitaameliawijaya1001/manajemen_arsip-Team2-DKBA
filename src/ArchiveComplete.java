@@ -1,5 +1,5 @@
 
-class ArchiveComplete extends Archive {
+public final class ArchiveComplete extends Archive {
     private String departement;
 
     public ArchiveComplete(String nomorBerkas, String kodeKlasifikasi, String jenisArsip, int tahun, int jumlahBerkas, String tingkatPerkembangan, String nomorBoks, String departement) {
