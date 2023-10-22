@@ -65,7 +65,7 @@ public class Main_TEAM2 {
         }
     }
 
-    private static void addArchive(Connection connection, ArchiveComplete nArchive) throws SQLException {
+    private static void addArchive(Connection connection, ArchiveComplete_TEAM2 nArchive) throws SQLException {
         String insertSQL = "INSERT INTO archives (nomorBerkas, kodeKlasifikasi, jenisArsip, tahun, jumlahBerkas, tingkatPerkembangan, nomorBoks, departemen) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement statement = connection.prepareStatement(insertSQL)) {
             statement.setString(1, nArchive.getNomorBerkas());
@@ -80,8 +80,8 @@ public class Main_TEAM2 {
         }
     }
 
-    private static List<ArchiveComplete> getAllArchives(Connection connection) throws SQLException {
-        List<ArchiveComplete> archives = new ArrayList<>();
+    private static List<ArchiveComplete_TEAM2> getAllArchives(Connection connection) throws SQLException {
+        List<ArchiveComplete_TEAM2> archives = new ArrayList<>();
         String selectSQL = "SELECT nomorBerkas, kodeKlasifikasi, jenisArsip, tahun, jumlahBerkas, tingkatPerkembangan, nomorBoks, departemen FROM archives";
         try (PreparedStatement statement = connection.prepareStatement(selectSQL);
              ResultSet resultSet = statement.executeQuery()) {
@@ -94,7 +94,7 @@ public class Main_TEAM2 {
                 String tingkatPerkembangan = resultSet.getString("tingkatPerkembangan");
                 String nomorBoks = resultSet.getString("nomorBoks");
                 String departemen = resultSet.getString("departemen");
-                archives.add(new ArchiveComplete(nomorBerkas, kodeKlasifikasi, jenisArsip, tahun, jumlahBerkas, tingkatPerkembangan, nomorBoks, departemen));
+                archives.add(new ArchiveComplete_TEAM2(nomorBerkas, kodeKlasifikasi, jenisArsip, tahun, jumlahBerkas, tingkatPerkembangan, nomorBoks, departemen));
             }
         }
         return archives;
@@ -122,9 +122,9 @@ public class Main_TEAM2 {
         return total;
     }
 
-    public static List<ArchiveComplete> filterArchives(List<ArchiveComplete> archives, ArchiveFilter_TEAM2 filter) {
-        List<ArchiveComplete> filteredArchives = new ArrayList<>();
-        for (ArchiveComplete archive : archives) {
+    public static List<ArchiveComplete_TEAM2> filterArchives(List<ArchiveComplete_TEAM2> archives, ArchiveFilter_TEAM2 filter) {
+        List<ArchiveComplete_TEAM2> filteredArchives = new ArrayList<>();
+        for (ArchiveComplete_TEAM2 archive : archives) {
             if (filter.filter(archive)) {
                 filteredArchives.add(archive);
             }
@@ -150,13 +150,13 @@ public class Main_TEAM2 {
         System.out.print("Masukan jumlah berkas: ");
         int jumlahBerkas = scanner.nextInt();
         System.out.println();
-        ArchiveComplete new_archive = new ArchiveComplete(nomorBerkas,kodeKlasifikasi,jenisArsip,tahun,jumlahBerkas,tingkatPerkembangan,nomorBoks,departemen);
+        ArchiveComplete_TEAM2 new_archive = new ArchiveComplete_TEAM2(nomorBerkas,kodeKlasifikasi,jenisArsip,tahun,jumlahBerkas,tingkatPerkembangan,nomorBoks,departemen);
         addArchive(connection, new_archive);
         System.out.println("Arsip berhasil diinput.");
     }
 
     private static void menuShowArchive(Connection connection) throws SQLException {
-        List<ArchiveComplete> archives = getAllArchives(connection);
+        List<ArchiveComplete_TEAM2> archives = getAllArchives(connection);
         archives.forEach(System.out::println);
     }
 
@@ -164,7 +164,7 @@ public class Main_TEAM2 {
         System.out.println("Masukan Nomor Berkas : ");
         String title_delete = scanner.nextLine();
         delete(connection, title_delete);
-        List<ArchiveComplete> archives_2 = getAllArchives(connection);
+        List<ArchiveComplete_TEAM2> archives_2 = getAllArchives(connection);
         archives_2.forEach(System.out::println);
     }
 
@@ -177,8 +177,8 @@ public class Main_TEAM2 {
     private static void menuSearch(Scanner scanner, Connection connection) throws SQLException {
         System.out.println("Cari Arsip berdasarkan Nomor Berkas : ");
         String key = scanner.nextLine();
-        List<ArchiveComplete> archiveList = getAllArchives(connection);
-        List<ArchiveComplete> filteredArchives = filterArchives(archiveList,
+        List<ArchiveComplete_TEAM2> archiveList = getAllArchives(connection);
+        List<ArchiveComplete_TEAM2> filteredArchives = filterArchives(archiveList,
                 archive -> archive.getNomorBerkas().contains(key));
         filteredArchives.forEach(System.out::println);
     }

@@ -1,8 +1,8 @@
 
-public final class ArchiveComplete extends Archive {
+public final class ArchiveComplete_TEAM2 extends Archive_TEAM2 {
     private String departement;
 
-    public ArchiveComplete(String nomorBerkas, String kodeKlasifikasi, String jenisArsip, int tahun, int jumlahBerkas, String tingkatPerkembangan, String nomorBoks, String departement) {
+    public ArchiveComplete_TEAM2(String nomorBerkas, String kodeKlasifikasi, String jenisArsip, int tahun, int jumlahBerkas, String tingkatPerkembangan, String nomorBoks, String departement) {
         super(nomorBerkas, kodeKlasifikasi, jenisArsip, tahun, jumlahBerkas, tingkatPerkembangan, nomorBoks);
         setDepartement(departement);
     }

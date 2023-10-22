@@ -1,4 +1,4 @@
-public class Archive {
+public class Archive_TEAM2 {
     private int id;
     private String nomorBerkas;
     private String kodeKlasifikasi;
@@ -8,7 +8,7 @@ public class Archive {
     private String tingkatPerkembangan;
     private String nomorBoks;
 
-    public Archive(String nomorBerkas, String kodeKlasifikasi, String jenisArsip, int tahun, int jumlahBerkas, String tingkatPerkembangan, String nomorBoks) {
+    public Archive_TEAM2(String nomorBerkas, String kodeKlasifikasi, String jenisArsip, int tahun, int jumlahBerkas, String tingkatPerkembangan, String nomorBoks) {
         setNomorBerkas(nomorBerkas);
         setKodeKlasifikasi(kodeKlasifikasi);
         setJenisArsip(jenisArsip);
